@@ -2,14 +2,10 @@ require "date"
 
 class TicketVendingSystem
 
-  attr_reader :rides, :created_at
+  attr_reader :products, :created_at
 
-  def initialize
-    @rides = [
-      { name: "roller coaster", fee: 1200 },
-      { name: "merry-go-round", fee: 1000 },
-      { name: "jackie coaster", fee: 800 }
-    ]
+  def initialize(products)
+    @products = products
     @created_at = Date.today
   end
   
@@ -36,13 +32,13 @@ class TicketVendingSystem
 
   def display_tickets
     puts "購入したいチケットを以下から選んで、金額を入力してください"
-    @rides.each_with_index do |ride, i|
-      puts "[#{i}] 商品名：#{ ride[:name] } 価格：#{ ride[:fee] }円"
+    @products.each_with_index do |product, i|
+      puts "[#{i}] 商品名：#{ product[:name] } 価格：#{ product[:fee] }円"
     end
   end
 
   def issue_ticket
-    ride = @rides[gets.to_i]
+    ride = @products[gets.to_i]
     puts "「#{ride[:name]}」が選択されました。"
     ride
   end
