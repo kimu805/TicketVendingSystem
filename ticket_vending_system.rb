@@ -26,28 +26,28 @@ class TicketVendingSystem
 
   def transaction
     display_tickets
-    ticket = issue_ticket
-    run_payment(ticket)
+    ride = issue_ticket
+    run_payment(ride)
   end
 
   def display_tickets
     puts "購入したいチケットを以下から選んで、金額を入力してください"
     @products.each_with_index do |product, i|
-      puts "[#{i}] 商品名：#{ product[:name] } 価格：#{ product[:fee] }円"
+      puts "[#{i}] 商品名：#{ product.name } 価格：#{ product.fee }円"
     end
   end
 
   def issue_ticket
     ride = @products[gets.to_i]
-    puts "「#{ride[:name]}」が選択されました。"
+    puts "「#{ride.name}」が選択されました。"
     ride
   end
 
-  def run_payment(ticket)
+  def run_payment(ride)
     puts "お金を入れてください"
     while true
       payment = gets.to_i
-      charge = calc_change(payment, ticket[:fee])
+      charge = calc_change(payment, ride.fee)
 
       if charge >= 0
         break
