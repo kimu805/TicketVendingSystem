@@ -1,3 +1,3 @@
 require "./ticket_vending_system"
 
-TicketVendingSystem.new()
+TicketVendingSystem.new.exec_transaction
