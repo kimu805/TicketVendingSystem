@@ -5,7 +5,7 @@ class TicketVendingSystem
   attr_reader :rides, :created_at
 
   def initialize
-    @ride_info = [
+    @rides = [
       { name: "roller coaster", fee: 1200 },
       { name: "merry-go-round", fee: 1000 },
       { name: "jackie coaster", fee: 800 }
@@ -37,7 +37,7 @@ class TicketVendingSystem
   def display_tickets
     puts "購入したいチケットを以下から選んで、金額を入力してください"
     @rides.each_with_index do |ride, i|
-      puts "[#{i}] 商品名：#{ ride.name } 価格：#{ ride.fee }円"
+      puts "[#{i}] 商品名：#{ ride[:name] } 価格：#{ ride[:fee] }円"
     end
   end
 
