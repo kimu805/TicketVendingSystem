@@ -1,0 +1,3 @@
+class TicketVendingSystem
+  
+end
